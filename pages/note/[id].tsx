@@ -13,7 +13,7 @@ const NotePage = ({ note }: any) => {
         <title>{title}</title>
       </Head>
       <Heading size={"lg"}>{title}</Heading>
-      <Text>{new Date(createdAt.nanoseconds).toLocaleDateString()}</Text>
+      {/* <Text>{new Date(createdAt.nanoseconds).toLocaleDateString()}</Text> */}
     </VStack>
   );
 };
