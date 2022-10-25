@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  Heading,
   HStack,
   IconButton,
   Menu,
@@ -9,7 +8,6 @@ import {
   MenuItem,
   MenuList,
   Spacer,
-  Text,
   useColorMode,
   useColorModeValue,
 } from "@chakra-ui/react";
@@ -17,6 +15,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../lib/firebase";
 import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 import { MoonIcon, SunIcon, HamburgerIcon } from "@chakra-ui/icons";
+import Router from "next/router";
 
 const Header = () => {
   const [user] = useAuthState(auth);
@@ -67,7 +66,10 @@ const Header = () => {
                     <MenuItem>New Todo</MenuItem>
                     <MenuItem>
                       <Button
-                        onClick={() => signOut(auth)}
+                        onClick={() => {
+                          signOut(auth);
+                          Router.push("/");
+                        }}
                         bg="red"
                         color="white"
                       >

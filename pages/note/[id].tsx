@@ -1,4 +1,11 @@
-import { Heading, Text, VStack } from "@chakra-ui/react";
+import {
+  Editable,
+  EditableInput,
+  EditablePreview,
+  Heading,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
 import { collection, getDocs, doc, getDoc } from "firebase/firestore";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
@@ -6,14 +13,25 @@ import { db } from "../../lib/firebase";
 
 const NotePage = ({ note }: any) => {
   const noteParsed = JSON.parse(note);
+  console.log(noteParsed);
   const { title, createdAt } = noteParsed;
   return (
     <VStack as="div">
       <Head>
         <title>{title}</title>
       </Head>
-      <Heading size={"lg"}>{title}</Heading>
-      {/* <Text>{new Date(createdAt.nanoseconds).toLocaleDateString()}</Text> */}
+      <Editable
+        w={"full"}
+        textAlign={"center"}
+        selectAllOnFocus={false}
+        fontSize={"3xl"}
+        fontWeight={"bold"}
+        defaultValue={title}
+      >
+        <EditablePreview />
+        <EditableInput _focusVisible={{ outline: "0px", border: "0px" }} />
+      </Editable>
+      <Text>{createdAt?.seconds}</Text>
     </VStack>
   );
 };
