@@ -9,29 +9,36 @@ import {
 import { collection, getDocs, doc, getDoc } from "firebase/firestore";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
+import NoteLayout from "../../components/layouts/NoteLayout";
 import { db } from "../../lib/firebase";
 
 const NotePage = ({ note }: any) => {
   const noteParsed = JSON.parse(note);
   console.log(noteParsed);
-  const { title, createdAt } = noteParsed;
+  const { title, createdAt, content } = noteParsed;
   return (
-    <VStack as="div">
-      <Head>
-        <title>{title}</title>
-      </Head>
-      <Editable
-        w={"full"}
-        textAlign={"center"}
-        selectAllOnFocus={false}
-        fontSize={"3xl"}
-        fontWeight={"bold"}
-        defaultValue={title}
-      >
-        <EditablePreview />
-        <EditableInput _focusVisible={{ outline: "0px", border: "0px" }} />
-      </Editable>
-      <Text>{createdAt?.seconds}</Text>
+    <VStack
+      as="div"
+      w={"full"}
+      px={"3"}
+      display={"flex"}
+      alignItems={"center"}
+      justifyContent={"center"}
+      mt={"80px"}
+    >
+      <NoteLayout>
+        <VStack gap={"10px"} maxW={"3xl"} as="article">
+          <Head>
+            <title>{title}</title>
+          </Head>
+
+          <Heading px={"3"} size={"2xl"}>
+            {title}
+          </Heading>
+          <Text>{new Date(createdAt?.nanoseconds).toLocaleString()}</Text>
+          <Text px={"3"}>{content}</Text>
+        </VStack>
+      </NoteLayout>
     </VStack>
   );
 };
