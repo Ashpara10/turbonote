@@ -1,4 +1,5 @@
 import {
+  Avatar,
   Box,
   Button,
   HStack,
@@ -39,7 +40,13 @@ const Header = () => {
     >
       <Box h={"100%"}>Turbonote</Box>
       <Spacer />
-      <Box display="flex" bg={""} h={"100%"}>
+      <Box
+        display="flex"
+        alignItems={"center"}
+        justifyContent={"center"}
+        bg={""}
+        h={"100%"}
+      >
         <IconButton
           aria-label="Theme Toggle Button"
           mx={"2"}
@@ -48,53 +55,50 @@ const Header = () => {
           onClick={toggleColorMode}
         />
 
-        {user ? (
-          <Box display={"flex"} flexDirection={"row"}>
-            <Menu>
-              {({ isOpen }) => (
-                <>
-                  <MenuButton _focusVisible={{ outline: "0px" }} as={"button"}>
-                    <IconButton
-                      aria-label="modal"
-                      variant={"outline"}
-                      icon={<HamburgerIcon />}
-                    />
-                  </MenuButton>
-                  <MenuList bg={menuBg} backdropFilter="blur(5px)">
-                    <MenuItem>New NoteBook</MenuItem>
-                    <MenuItem>New Note</MenuItem>
-                    <MenuItem>New Todo</MenuItem>
-                    <MenuItem>
-                      <Button
-                        onClick={() => {
-                          signOut(auth);
-                          Router.push("/");
-                        }}
-                        bg="red"
-                        color="white"
-                      >
-                        SignOut
-                      </Button>
-                    </MenuItem>
-                  </MenuList>
-                </>
-              )}
-            </Menu>
-          </Box>
-        ) : (
-          <Button
-            mx={"2"}
-            w={"fit-content"}
-            onClick={async () => {
-              const provider = new GoogleAuthProvider();
-              const u = await signInWithPopup(auth, provider);
-            }}
-          >
-            Signup
-          </Button>
-        )}
+        <Avatar
+          p="1"
+          size={"md"}
+          name={`${auth?.currentUser?.displayName}`}
+          src={`${auth?.currentUser?.photoURL}`}
+        />
       </Box>
     </HStack>
   );
 };
 export default Header;
+
+{
+  /* <Box bg="red" display={"flex"} flexDirection={"row"}> */
+}
+{
+  /* <Menu>
+      {({ isOpen }) => (
+        <>
+          <MenuButton _focusVisible={{ outline: "0px" }} as={"button"}>
+            <IconButton
+              aria-label="modal"
+              variant={"outline"}
+              icon={<HamburgerIcon />}
+            />
+          </MenuButton>
+          <MenuList bg={menuBg} backdropFilter="blur(5px)">
+            <MenuItem>New NoteBook</MenuItem>
+            <MenuItem>New Note</MenuItem>
+            <MenuItem>New Todo</MenuItem>
+            <MenuItem>
+              <Button
+                onClick={() => {
+                  signOut(auth);
+                  Router.push("/");
+                }}
+                bg="red"
+                color="white"
+              >
+                SignOut
+              </Button>
+            </MenuItem>
+          </MenuList>
+        </>
+      )}
+    </Menu> */
+}

@@ -37,7 +37,7 @@ const NoteLayout = ({ children }: { children: React.ReactNode }) => {
             alignItems={"center"}
             justifyContent={"center"}
             borderRadius={"full"}
-            onClick={() => Router.push("/home")}
+            onClick={() => Router.push("/home ")}
           >
             <Icon as={ArrowBackIcon} fontSize={"xl"} />
           </Button>
