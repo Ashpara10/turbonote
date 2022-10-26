@@ -1,8 +1,4 @@
-import {
-  Heading,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
+import { Heading, Text, VStack } from "@chakra-ui/react";
 import { collection, getDocs, doc, getDoc } from "firebase/firestore";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
@@ -21,7 +17,7 @@ const NotePage = ({ note }: any) => {
       display={"flex"}
       alignItems={"center"}
       justifyContent={"center"}
-      mt={"80px"}
+      my={"80px"}
     >
       <NoteLayout>
         <VStack gap={"10px"} maxW={"3xl"} as="article">
@@ -29,7 +25,7 @@ const NotePage = ({ note }: any) => {
             <title>{title}</title>
           </Head>
 
-          <Heading px={"3"} size={"2xl"}>
+          <Heading px={"3"} size={{ base: "xl", md: "2xl" }}>
             {title}
           </Heading>
           <Text>{new Date(createdAt?.nanoseconds).toLocaleString()}</Text>
