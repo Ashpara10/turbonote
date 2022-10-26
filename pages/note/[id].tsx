@@ -1,7 +1,4 @@
 import {
-  Editable,
-  EditableInput,
-  EditablePreview,
   Heading,
   Text,
   VStack,
