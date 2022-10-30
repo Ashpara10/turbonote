@@ -120,7 +120,7 @@ const BottomBar = () => {
         icon={<SearchIcon />}
       />
       <Avatar
-        size={{ sm: "sm", md: "md" }}
+        size={"sm"}
         name={`${auth?.currentUser?.displayName}`}
         src={`${auth?.currentUser?.photoURL}`}
       />
