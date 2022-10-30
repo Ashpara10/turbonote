@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { AddIcon, SearchIcon } from "@chakra-ui/icons";
 import {
+  Avatar,
   Button,
   Flex,
   FormControl,
@@ -20,7 +21,7 @@ import {
   ModalCloseButton,
 } from "@chakra-ui/react";
 import { addDoc, collection, Timestamp } from "firebase/firestore";
-import { db } from "../lib/firebase";
+import { auth, db } from "../lib/firebase";
 
 const BottomBar = () => {
   const [note, setNote] = useState<{
@@ -117,6 +118,12 @@ const BottomBar = () => {
         bg={"transparent"}
         aria-label="add-note-btn"
         icon={<SearchIcon />}
+      />
+      <Avatar
+        p={{ sm: "0.5", md: "1" }}
+        size={{ sm: "sm", md: "md" }}
+        name={`${auth?.currentUser?.displayName}`}
+        src={`${auth?.currentUser?.photoURL}`}
       />
     </Flex>
   );

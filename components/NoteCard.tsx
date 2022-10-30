@@ -2,8 +2,8 @@ import { Box, Heading, Text, useColorModeValue } from "@chakra-ui/react";
 import router from "next/router";
 import { Note } from "../lib/types";
 
-const NoteCard = ({ id, note }: { id: string; note: Note }) => {
-  console.log(note);
+const NoteCard = ({ note }: { note: Note }) => {
+  // console.log(note);
   return (
     <Box
       p="3"
@@ -16,11 +16,10 @@ const NoteCard = ({ id, note }: { id: string; note: Note }) => {
     >
       <Heading
         size={"md"}
-        onClick={() => router.push("/note/[id]", `/note/${id}`)}
+        onClick={() => router.push("/note/[id]", `/note/${note.id}`)}
       >
         {note.title}
       </Heading>
-      {/* <Text>{new Date(note.createdAt.nanoseconds).toString()}</Text> */}
     </Box>
   );
 };

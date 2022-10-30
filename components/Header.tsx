@@ -54,51 +54,8 @@ const Header = () => {
           colorScheme={useColorModeValue("purple", "orange")}
           onClick={toggleColorMode}
         />
-
-        <Avatar
-          p="1"
-          size={"md"}
-          name={`${auth?.currentUser?.displayName}`}
-          src={`${auth?.currentUser?.photoURL}`}
-        />
       </Box>
     </HStack>
   );
 };
 export default Header;
-
-{
-  /* <Box bg="red" display={"flex"} flexDirection={"row"}> */
-}
-{
-  /* <Menu>
-      {({ isOpen }) => (
-        <>
-          <MenuButton _focusVisible={{ outline: "0px" }} as={"button"}>
-            <IconButton
-              aria-label="modal"
-              variant={"outline"}
-              icon={<HamburgerIcon />}
-            />
-          </MenuButton>
-          <MenuList bg={menuBg} backdropFilter="blur(5px)">
-            <MenuItem>New NoteBook</MenuItem>
-            <MenuItem>New Note</MenuItem>
-            <MenuItem>New Todo</MenuItem>
-            <MenuItem>
-              <Button
-                onClick={() => {
-                  signOut(auth);
-                  Router.push("/");
-                }}
-                bg="red"
-                color="white"
-              >
-                SignOut
-              </Button>
-            </MenuItem>
-          </MenuList>
-        </>
-      )}
-    </Menu> */
-}
