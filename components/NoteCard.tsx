@@ -1,16 +1,23 @@
-import { Box, Heading, Text, useColorModeValue } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Heading,
+  Tag,
+  Text,
+  useColorModeValue,
+} from "@chakra-ui/react";
 import router from "next/router";
 import { Note } from "../lib/types";
 
 const NoteCard = ({ note }: { note: Note }) => {
-  // console.log(note);
   return (
     <Box
-      p="3"
-      borderRadius={"lg"}
+      py="4"
+      px={"5"}
+      borderRadius={"2xl"}
       border={"1px"}
       borderColor={useColorModeValue("gray.300", "whiteAlpha.200")}
-      m={"3"}
+      mb={"3"}
       maxW={"sm"}
       w="full"
     >
@@ -20,6 +27,10 @@ const NoteCard = ({ note }: { note: Note }) => {
       >
         {note.title}
       </Heading>
+      <Flex px="2" alignItems={"center"} justifyContent={"space-between"}>
+        <Text>{new Date(note?.createdAt?.nanoseconds).toDateString()}</Text>
+        <Tag colorScheme={"purple"}>#{note.tag}</Tag>
+      </Flex>
     </Box>
   );
 };

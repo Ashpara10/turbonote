@@ -46,7 +46,7 @@ const BottomBar = () => {
     <Flex
       display={{ sm: "flex", md: "none" }}
       gap={"10px"}
-      py={"1.5"}
+      py={"2"}
       px={"3"}
       borderTop="1px"
       borderColor={"whiteAlpha.200"}
@@ -58,7 +58,6 @@ const BottomBar = () => {
       bottom={"0"}
       left={"0"}
       right={"0"}
-      h="50px"
     >
       <IconButton
         bg={"transparent"}
