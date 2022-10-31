@@ -9,7 +9,7 @@ import {
 import router from "next/router";
 import { Note } from "../lib/types";
 
-const NoteCard = ({ note }: { note: Note }) => {
+const NoteCard = ({ note, id }: { note: Note; id: string }) => {
   return (
     <Box
       py="4"
@@ -23,11 +23,16 @@ const NoteCard = ({ note }: { note: Note }) => {
     >
       <Heading
         size={"md"}
-        onClick={() => router.push("/note/[id]", `/note/${note.id}`)}
+        onClick={() => router.push("/note/[id]", `/note/${id}`)}
       >
         {note.title}
       </Heading>
-      <Flex px="2" alignItems={"center"} justifyContent={"space-between"}>
+      <Flex
+        px="2"
+        mt={"2"}
+        alignItems={"center"}
+        justifyContent={"space-between"}
+      >
         <Text>{new Date(note?.createdAt?.nanoseconds).toDateString()}</Text>
         <Tag colorScheme={"purple"}>#{note.tag}</Tag>
       </Flex>
