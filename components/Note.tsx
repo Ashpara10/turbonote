@@ -30,7 +30,7 @@ const Notes = () => {
   }, []);
 
   return (
-    <VStack w="full" maxW="md">
+    <VStack w="full" maxW="md" mb="20">
       {note ? (
         note?.map((e) => {
           return <NoteCard key={e} id={e.id} note={e.data()} />;

@@ -47,6 +47,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       note: JSON.stringify(note.data()),
     },
     notFound: !note.exists() && "Note does not exists",
+    revalidate: 10,
   };
 };
 export const getStaticPaths: GetStaticPaths = async () => {
